@@ -40,6 +40,32 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
+                <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  has-sub {{ $active == 'transaction' ? 'active' : '' }}">
+                    <a href="" class='sidebar-link'>
+                        <i class="bi bi-credit-card-2-front-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="{{ route('admin.transaction.index') }}" class='sidebar-link'>
+                                <i class="bi bi-geo-alt-fill"></i>
+                                <span>Destinasi</span>
+                            </a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="" class='sidebar-link'>
+                                <i class="bi bi-card-list"></i>
+                                <span>Persyaratan</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="sidebar-item {{ $active == 'tour' ? 'active' : '' }}">
                     <a href="{{ route('admin.tour.index') }}" class='sidebar-link'>
                         <i class="bi bi-geo-fill"></i>
@@ -50,6 +76,18 @@
                     <a href="{{ route('admin.tour-gallery.index') }}" class='sidebar-link'>
                         <i class="bi bi-images"></i>
                         <span>Galery Destinasi Wisata</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ $active == 'hotel' ? 'active' : '' }}">
+                    <a href="{{ route('admin.hotel.index') }}" class='sidebar-link'>
+                        <i class="bi bi-building"></i>
+                        <span>Penginapan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item {{ $active == 'transportation' ? 'active' : '' }}">
+                    <a href="{{ route('admin.transportation.index') }}" class='sidebar-link'>
+                        <i class="bi bi-compass-fill"></i>
+                        <span>Kendaraan</span>
                     </a>
                 </li>
             </ul>

@@ -34,4 +34,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class, 'users_id', 'id');
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class, 'transaction_tours_id', 'id');
+    }
 }

@@ -7,14 +7,18 @@
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
             <div class="navbar-nav ms-lg-4 mt-4 m-lg-0">
                 <a class="nav-link text-white  me-4 {{ $active == 'home' ? 'active' : '' }}"
                     href="{{ route('home') }}">Home</a>
                 <a class="nav-link text-white  me-4 {{ $active == 'tour' ? 'active' : '' }}"
                     href="{{ route('destinations.index') }}">Destinasi</a>
-                <a class="nav-link text-white me-4" aria-current="page" href="">Transportasi</a>
                 <a class="nav-link text-white me-4" href="#">Penginapan</a>
+                <a class="nav-link text-white  me-4 {{ $active == 'transportation' ? 'active' : '' }}"
+                    href="{{ route('transportations.index') }}">Transportasi</a>
+
             </div>
             <div class="ms-lg-auto m-lg-0 mt-4 mb-2">
                 @guest
@@ -44,7 +48,7 @@
 
                             </li>
                             <li>
-                                <a href=""
+                                <a href="{{ route('myorder') }}"
                                     class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-white d-flex align-items-center m-0 py-3 shadow-none">
                                     <p class="me-3"><i class="fas fa-scroll"></i></p>
                                     <p class="text-sm">Pesanan Saya</p>

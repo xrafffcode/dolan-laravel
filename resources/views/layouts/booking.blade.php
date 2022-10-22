@@ -78,14 +78,14 @@
                         <li class="breadcrumb-item d-flex align-items-center">
                             <button
                                 class="btn py-1 px-2 shadow-none text-sm text-white fw-bolder me-3 {{ $active == 'payment' ? 'bgColor' : 'bg-secondary-light' }}">3</button>
-                            <h6 class="fw-bold m-0 {{ $active == 'payment' ? '' : 'text-secondary-light' }}">Payment
+                            <h6 class="fw-bold m-0 {{ $active == 'payment' ? '' : 'text-secondary-light' }}">Pembayaran
                             </h6>
                         </li>
                         <li class="breadcrumb-item d-flex align-items-center">
                             <button
                                 class="btn py-1 px-2 shadow-none text-sm text-white fw-bolder me-3 {{ $active == 'process' ? 'bgColor' : 'bg-secondary-light' }}">4</button>
                             <h6 class="fw-bold m-0 {{ $active == 'process' ? '' : 'text-secondary-light' }}">
-                                Process</h6>
+                                Proses</h6>
                         </li>
 
 

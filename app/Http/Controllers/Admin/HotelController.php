@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
-use App\Models\User;
+use App\Http\Requests\HotelRequest;
+use App\Models\Hotel;
+use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class HotelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +18,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $users = User::with('roles')->whereHas('roles', function ($query) {
-            $query->where('name', 'user');
-        })->count();
-
-        return view('pages.admin.dashboard', [
-            'users' => $users,
-            'transactions' => Transaction::with(['tour', 'user'])->limit(8)->get(),
-            'successful' => Transaction::with(['tour', 'user'])->where('transaction_status', 'SUCCESSFUL')->count(),
-            'transactionToday' => Transaction::with(['tour', 'user'])->whereDate('created_at', date('Y-m-d'))->count(),
+        return view('pages.admin.hotels.index', [
+            'hotels' => Hotel::all()
         ]);
     }
 
@@ -36,7 +30,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.hotels.create');
     }
 
     /**
@@ -45,9 +39,19 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->title);
+
+        try {
+            Hotel::create($data);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error',  $e->getMessage());
+        }
+
+        return redirect()->route('admin.hotel.index')->with('success', 'Penginapan berhasil ditambahkan');
     }
 
     /**

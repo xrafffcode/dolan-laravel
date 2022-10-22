@@ -15,8 +15,8 @@ class HotelGallery extends Model
         'hotel_id', 'image'
     ];
 
-    public function tour()
+    public function hotel()
     {
-        return $this->belongsTo(Tour::class, 'tour_id', 'id');
+        return $this->belongsTo(Hotel::class, 'hotel_id', 'id');
     }
 }

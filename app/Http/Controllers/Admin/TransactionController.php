@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\Transaction;
-use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +17,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $users = User::with('roles')->whereHas('roles', function ($query) {
-            $query->where('name', 'user');
-        })->count();
-
-        return view('pages.admin.dashboard', [
-            'users' => $users,
-            'transactions' => Transaction::with(['tour', 'user'])->limit(8)->get(),
-            'successful' => Transaction::with(['tour', 'user'])->where('transaction_status', 'SUCCESSFUL')->count(),
-            'transactionToday' => Transaction::with(['tour', 'user'])->whereDate('created_at', date('Y-m-d'))->count(),
+        return view('pages.admin.transaction.index', [
+            'transactions' => Transaction::with(['tour'])->get()
         ]);
     }
 
@@ -58,7 +51,11 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.admin.transaction.detail', [
+            'active' => 'transactions',
+            'data' => Transaction::findOrFail($id),
+            'payment' => Payment::where('transaction_tours_id', $id)->first()
+        ]);
     }
 
     /**
@@ -81,7 +78,24 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            Transaction::findOrFail($id)->update(['transaction_status' => 'SUCCESSFUL']);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->back()->with('success', 'Transaksi berhasil diupdate');
+    }
+
+    public function cancel($id)
+    {
+        try {
+            Transaction::findOrFail($id)->update(['transaction_status' => 'FAILED']);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('admin.transaction.index')->with('success', 'Transaksi berhasil dibatalkan');
     }
 
     /**
@@ -92,6 +106,12 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Transaction::findOrFail($id)->delete();
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+
+        return redirect()->route('admin.transaction.index')->with('success', 'Transaksi berhasil dihapus');
     }
 }

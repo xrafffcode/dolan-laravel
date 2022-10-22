@@ -168,11 +168,11 @@
 
         </div>
         <div class="properties-list d-flex py-4">
-            @foreach ($tours as $tour)
+            @foreach ($hotels as $hotel)
                 <div class="card border-0 property">
                     <div class="m-2 mb-1 border-0 position-relative">
                         <div class="card-img-top"
-                            style="background-image: url('{{ $tour->galleries->count() ? asset('storage/' . $tour->galleries->first()->image) : asset('assets/frontend/images/bg-hero-gif.gif') }}');">
+                            style="background-image: url('{{ $hotel->galleries->count() ? asset('storage/' . $hotel->galleries->first()->image) : asset('assets/frontend/images/bg-hero-gif.gif') }}');">
                         </div>
                     </div>
                     <div class="card-body pt-2 d-flex flex-column justify-content-between">
@@ -180,7 +180,7 @@
                             <div class="rating d-flex">
                                 <p class="baseColor m-0 text-sm"><i class="fas fa-star"></i></p>
                                 <p class="baseColor text-sm text-base fw-bold ms-2" style="margin-top: 0.6px;">
-                                    {{ $tour->rating }}
+                                    {{ $hotel->rating }}
                                 </p>
                                 <p class="text-secondary text-sm fw-bold" style="margin-top: 0.6px;">
                                     (1)
@@ -188,17 +188,57 @@
                             </div>
 
                         </div>
-                        <h5 class="card-title text-base fw-bold m-0">{{ $tour->title }}</h5>
+                        <h5 class="card-title text-base fw-bold m-0">{{ $hotel->title }}</h5>
                         <div class="d-flex align-items-center">
                             <p class="text-sm text-secondary"><i class="fas fa-map-marker-alt"></i></p>
-                            <p class="text-sm text-secondary ms-2">{{ $tour->location }}</p>
+                            <p class="text-sm text-secondary ms-2">
+                                {{ $hotel->city }}, {{ $hotel->area }},
+                                {{ $hotel->country }}
+                            </p>
                         </div>
                         <div class="d-flex align-items-center justify-content-between">
-                            <h6 class="fw-bolder baseColor m-0">@idr($tour->price)<br><span
-                                    class="text-secondary text-sm">/Ticket
+                            <h6 class="fw-bolder baseColor m-0">@idr($hotel->price)<br><span
+                                    class="text-secondary text-sm">/Orang
                                 </span></h6>
-                            <a href="/destinations/{{ Str::lower($tour->location) }}/{{ $tour->slug }}"
+                            <a href="/hotel/{{ Str::lower($hotel->city) }}/{{ $hotel->slug }}"
                                 class="btn btn-outline-base px-4 shadow-none">
+                                <p class="fw-bold">Lihat Detail</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+    {{-- End Tour --}}
+
+
+    {{-- Tour --}}
+    <section class="properties container mt-5">
+        <div class="header d-flex flex-wrap justify-content-between align-items-center mb-3">
+            <div class="mb-3">
+                <h2 class="fw-bolder mt-2">Berbagai pilihan transportasi tersedia</h2>
+                <p class="themeColor">Pilih transportasi yang sesuai dengan kebutuhanmu</p>
+            </div>
+
+        </div>
+        <div class="properties-list d-flex py-4">
+            @foreach ($transportations as $data)
+                <div class="property transport border">
+                    <p
+                        class="m-0 fw-bold text-center {{ $data->status == 'Available' ? 'bgTheme' : 'bg-danger' }} py-1 text-white">
+                        {{ $data->status }}</p>
+                    <div class="d-flex align-items-center p-2">
+                        <div class="m-2 mb-1 border-0 position-relative w-50 pb-1">
+                            <div class="card-img-top"
+                                style="background-image: url('{{ Storage::url($data->image) }}'); height: 120px;">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-base fw-bolder m-0">{{ $data->company_name }}</h5>
+                            <p class="text-sm fw-bold text-secondary mt-2 mb-3">{{ $data->type }}</p>
+                            <a href="/transportations/{{ Str::lower($data->type) }}/{{ $data->slug }}"
+                                class="btn bgColor bgHover text-white w-100 {{ $data->status == 'Unavailable' ? 'disabled' : '' }}">
                                 <p class="fw-bold">Lihat Detail</p>
                             </a>
                         </div>

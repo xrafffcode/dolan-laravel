@@ -9,6 +9,8 @@ class Hotel extends Model
 {
     use HasFactory;
 
+    protected $table = 'hotels';
+
     protected $guarded = ['id'];
 
     protected $fillable = [
@@ -19,6 +21,7 @@ class Hotel extends Model
         'city',
         'area',
         'country',
+
         'price',
         'restaurant',
         'wifi',
@@ -27,6 +30,11 @@ class Hotel extends Model
         'parking',
         'laundry',
     ];
+
+    public function galleries()
+    {
+        return $this->hasMany(HotelGallery::class, 'hotel_id', 'id');
+    }
 
     public function testimonials()
     {

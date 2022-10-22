@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Transportation;
 
-class DashboardController extends Controller
+class TransportationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +15,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $users = User::with('roles')->whereHas('roles', function ($query) {
-            $query->where('name', 'user');
-        })->count();
-
-        return view('pages.admin.dashboard', [
-            'users' => $users,
-            'transactions' => Transaction::with(['tour', 'user'])->limit(8)->get(),
-            'successful' => Transaction::with(['tour', 'user'])->where('transaction_status', 'SUCCESSFUL')->count(),
-            'transactionToday' => Transaction::with(['tour', 'user'])->whereDate('created_at', date('Y-m-d'))->count(),
+        return view('pages.user.transportations', [
+            'data' => Transportation::paginate(6)
         ]);
     }
 
@@ -56,9 +47,12 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($type, Transportation $transportation)
     {
-        //
+        return view('pages.user.transportation', [
+            'detail' => $transportation,
+            'similars' => Transportation::where('type', $type)->paginate(10)
+        ]);
     }
 
     /**

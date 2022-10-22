@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class HotelGalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $users = User::with('roles')->whereHas('roles', function ($query) {
-            $query->where('name', 'user');
-        })->count();
-
-        return view('pages.admin.dashboard', [
-            'users' => $users,
-            'transactions' => Transaction::with(['tour', 'user'])->limit(8)->get(),
-            'successful' => Transaction::with(['tour', 'user'])->where('transaction_status', 'SUCCESSFUL')->count(),
-            'transactionToday' => Transaction::with(['tour', 'user'])->whereDate('created_at', date('Y-m-d'))->count(),
-        ]);
+        //
     }
 
     /**
