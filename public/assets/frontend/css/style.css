@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap");
 
 :root {
-    --indigoColor: #5e43f3;
-    --limeColor: #39eb74;
-    --indigoHover: #4734b1;
+    --blueColor: #0084ff;
+    --limeColor: #ff6600;
+    --blueHover: #1c91ffda;
 }
 
 * {
@@ -15,7 +15,7 @@
 }
 
 .baseColor {
-    color: var(--indigoColor) !important;
+    color: var(--blueColor) !important;
 }
 
 .themeColor {
@@ -27,25 +27,25 @@
 }
 
 .bgColor {
-    background-color: var(--indigoColor);
+    background-color: var(--blueColor);
 }
 
 .bgHover:hover {
-    background-color: var(--indigoHover);
+    background-color: var(--blueHover);
 }
 
 .bgHover:active {
-    background-color: var(--indigoHover);
+    background-color: var(--blueHover);
 }
 
 .btn-outline-base {
-    color: var(--indigoColor);
-    border: 1px solid var(--indigoColor);
+    color: var(--blueColor);
+    border: 1px solid var(--blueColor);
 }
 
 .btn-outline-base:hover {
     color: white;
-    background-color: var(--indigoColor);
+    background-color: var(--blueColor);
 }
 
 h5 {
@@ -127,7 +127,7 @@ input {
 }
 
 .navbar-expand-lg.scrolled .login {
-    color: var(--indigoColor) !important;
+    color: var(--blueColor) !important;
     background-color: #e9e6ff;
 }
 
@@ -137,11 +137,11 @@ input {
 }
 
 .navbar .navbar-nav a:hover {
-    color: var(--indigoColor) !important;
+    color: var(--blueColor) !important;
 }
 
 .navbar .navbar-nav .active {
-    color: var(--indigoColor) !important;
+    color: var(--blueColor) !important;
 }
 
 .navbar .btn-signup,
@@ -151,7 +151,7 @@ input {
 }
 
 .hero {
-    background-image: url("../images/hero2.jpg");
+    background-image: url("../images/background-hero.gif");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -262,6 +262,7 @@ input {
     margin: 0 26px;
     overflow: hidden;
     transition: all ease 0.3s;
+    box-shadow: 0px 0px 20px rgba(133, 143, 177, 0.2);
 }
 
 .properties .properties-list .property.transport {
@@ -276,7 +277,7 @@ input {
 }
 
 .properties .properties-list .property .rating {
-    width: 108px;
+
     background-color: #f5f2ff;
     padding: 6px 14px 4px 14px;
     border-radius: 20px;
@@ -366,7 +367,7 @@ input {
 
 .testimonials .reviews-container .prev:hover,
 .testimonials .reviews-container .next:hover {
-    background-color: var(--indigoHover);
+    background-color: var(--blueHover);
 }
 
 .testimonials .dot {
@@ -442,7 +443,7 @@ footer a:hover {
 }
 
 .img-mini.active {
-    border: 3px solid #43F37F;
+    border: 3px solid #0084ff;
 }
 
 .members {
@@ -499,7 +500,7 @@ footer a:hover {
 
 .auth .card-header {
     background-color: white;
-    color: var(--indigoColor);
+    color: var(--blueColor);
     text-align: center;
     font-size: 1.2em;
     font-weight: 600;
@@ -516,7 +517,7 @@ footer a:hover {
 }
 
 .auth .btn-link {
-    color: var(--indigoColor) !important;
+    color: var(--blueColor) !important;
     text-decoration: none;
     font-size: 13px;
 }

@@ -8,6 +8,7 @@
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Title</th>
                             <th>Deskripsi</th>
                             <th>Harga</th>
@@ -18,9 +19,10 @@
                     <tbody>
                         @foreach ($tours as $tour)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $tour->title }}</td>
-                                <td>{{ $tour->description }}</td>
-                                <td>{{ $tour->price }}</td>
+                                <td>{!! Str::limit($tour->description, 300) !!}</td>
+                                <td nowrap>@idr($tour->price)</td>
                                 <td>{{ $tour->location }}</td>
                                 <td nowrap>
                                     <a href="{{ route('admin.tour.edit', $tour->id) }}"

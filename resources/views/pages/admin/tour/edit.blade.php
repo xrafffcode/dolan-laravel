@@ -1,7 +1,7 @@
-<x-admin-layout active="tour" title="Tambah Destinasi">
+<x-admin-layout active="tour" title="Edit Destinasi">
     <div class="card">
         <div class="card-header">
-            Data Petugas
+            Edit Destinasi
         </div>
         <div class="card-body">
             <form class="form form-horizontal" action="{{ route('admin.tour.update', $tour->id) }}" method="POST">
@@ -80,4 +80,16 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+        <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+        <script>
+            var konten = document.getElementById("description");
+            CKEDITOR.replace(konten, {
+                language: 'en-gb'
+            });
+            CKEDITOR.config.allowedContent = true;
+        </script>
+    @endpush
 </x-admin-layout>
