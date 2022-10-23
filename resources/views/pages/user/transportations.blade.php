@@ -109,7 +109,7 @@
                     @forelse ($data as $d)
                         <div class="col-md-5 bg-white rounded-12 mt-4 p-4">
                             <div class="card-image rounded-3 me-4 w-100"
-                                style="background-image: url('{{ Storage::url($d->image) }}')">
+                                style="background-image: url('{{ asset('storage/' . $d->image) }}')">
                             </div>
                             <div class="card-content">
                                 <h4 class="fw-bolder m-0 mt-4">{{ $d->company_name }}</h4>

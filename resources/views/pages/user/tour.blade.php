@@ -70,7 +70,7 @@
                     <div class="row m-0 bg-white rounded-12 mt-4">
                         <div class="col-md-9 p-4 d-flex cardy">
                             <div class="card-image rounded-3 me-4"
-                                style="background-image: url('{{ $d->galleries->count() ? Storage::url($d->galleries->first()->image) : Storage::url('assets/gallery/default.jpg') }}')">
+                                style="background-image: url('{{ $d->galleries->count() ? asset('storage/' . $d->galleries->first()->image) : asset('assets/frontend/images/default-avatar.jpg') }}')">
                             </div>
                             <div class="card-content">
                                 <h4 class="fw-bolder m-0">{{ $d->title }}</h4>

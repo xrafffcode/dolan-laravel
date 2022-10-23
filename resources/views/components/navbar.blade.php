@@ -32,7 +32,7 @@
                         <button
                             class="btn fw-bold text-white d-flex align-items-center p-0 shadow-none drdwn nav-link dropdown-toggle"
                             type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ Auth::user()->image == null ? asset('assets/frontend/images/default-avatar.jpg') : Storage::url(Auth::user()->image) }}"
+                            <img src="{{ Auth::user()->image == null ? asset('assets/frontend/images/default-avatar.jpg') : asset('storage/' . Auth::user()->image) }}"
                                 alt="profile" width="30" class="me-3 rounded-circle">
                             <p>{{ Str::limit(Auth::user()->name, 16, '') }}</p>
                         </button>

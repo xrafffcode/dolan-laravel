@@ -22,7 +22,7 @@
                                 <div class="user-img d-flex align-items-center">
                                     <div class="avatar avatar-md">
                                         <img
-                                            src="{{ Auth::user()->image == null ? asset('assets/frontend/images/default-avatar.jpg') : Storage::url(Auth::user()->image) }}">
+                                            src="{{ Auth::user()->image == null ? asset('assets/frontend/images/default-avatar.jpg') : asset('storage/' . Auth::user()->image) }}">
                                     </div>
                                 </div>
                             </div>

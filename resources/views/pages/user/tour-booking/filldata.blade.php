@@ -94,7 +94,7 @@
                 <div class="col-lg-5 p-0">
                     <div class="detail mb-5">
                         <div class="rounded-12 bg-white overflow-hidden">
-                            <img src="{{ $destination->galleries->count() ? Storage::url($destination->galleries->first()->image) : Storage::url('assets/gallery/default.jpg') }}"
+                            <img src="{{ $destination->galleries->count() ? asset('storage/' . $destination->galleries->first()->image) : 'https://source.unsplash.com/1200x400/?travel' }}"
                                 alt="destination" class="img-fluid p-4 w-100" style="border-radius: 2em;">
                             <div class="d-flex justify-content-center align-items-center">
 

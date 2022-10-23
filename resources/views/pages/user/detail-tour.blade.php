@@ -59,9 +59,9 @@
                                     @endforeach
                                 </div>
                             @else
-                                <img src="{{ Storage::url('assets/gallery/default.jpg') }}" class="img-thumb">
+                                <img src="{{ asset('images/gallery/default.png') }}" class="img-thumb">
                                 <div class="thumbnails d-flex justify-content-between mt-4 w-100">
-                                    <img src="{{ Storage::url('assets/gallery/default.jpg') }}" class="img-mini">
+                                    <img src="{{ asset('assets/gallery/default.jpg') }}" class="img-mini">
                                 </div>
                             @endif
                         </div>

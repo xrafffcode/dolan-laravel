@@ -231,7 +231,7 @@
                     <div class="d-flex align-items-center p-2">
                         <div class="m-2 mb-1 border-0 position-relative w-50 pb-1">
                             <div class="card-img-top"
-                                style="background-image: url('{{ Storage::url($data->image) }}'); height: 120px;">
+                                style="background-image: url('{{ asset('storage/' . $data->image) }}'); height: 120px;">
                             </div>
                         </div>
                         <div class="card-body">

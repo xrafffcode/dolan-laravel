@@ -106,7 +106,7 @@
                                             <div class="rounded-12 overflow-hidden shadow-base mt-4">
                                                 <div class="row align-items-center m-0">
                                                     <div class="col-lg-4 p-4"><img
-                                                            src="{{ $d->tour->galleries->count() ? Storage::url($d->tour->galleries->first()->image) : Storage::url('assets/gallery/default.jpg') }}"
+                                                            src="{{ $d->tour->galleries->count() ? asset('storage/' . $d->tour->galleries->first()->image) : asset('assets/img/no-image.png') }}"
                                                             width="100%" class="me-4 rounded-8"></div>
                                                     <div class="col-lg-8 py-lg-4 pt-1 pb-4 px-lg-0 px-4">
                                                         <div

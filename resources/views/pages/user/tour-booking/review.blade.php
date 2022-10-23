@@ -16,7 +16,7 @@
                         <div class="p-4 rounded-12 bg-white">
                             <div class="row m-0 align-items-center">
                                 <div class="col-lg-4 p-0">
-                                    <img src="{{ $tour->galleries->count() ? Storage::url($tour->galleries->first()->image) : Storage::url('assets/gallery/default.jpg') }}"
+                                    <img src="{{ $tour->galleries->count() ? asset('storage/' . $tour->galleries->first()->image) : 'https://via.placeholder.com/100x100.png?text=Travel' }}"
                                         class="img-fluid rounded-12">
                                 </div>
                                 <div class="col-lg-8 p-0 ps-lg-4">
@@ -45,7 +45,7 @@
 
                                 </div>
                                 <div class="col-lg-5 p-0 mt-lg-0 mt-4 text-center">
-                                    <img src="{{ $tour->galleries->skip(1)->count() ? Storage::url($tour->galleries->get(1)->image) : Storage::url('assets/gallery/default.jpg') }}"
+                                    <img src="{{ $tour->galleries->skip(1)->count() ? asset('storage/' . $tour->galleries->skip(1)->first()->image) : 'https://via.placeholder.com/100x100.png?text=Travel' }}"
                                         class="rounded-3 float-lg-end" width="60%">
                                 </div>
                             </div>

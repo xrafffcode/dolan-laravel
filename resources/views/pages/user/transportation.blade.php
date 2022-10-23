@@ -43,7 +43,7 @@
             <div class="travel-detail col-lg-6 p-0">
                 <div class="card border-0 rounded-12 p-lg-5 p-4">
                     <div class="card-body">
-                        <img src="{{ Storage::url($detail->image) }}" class="img-thumb">
+                        <img src="{{ asset('storage/' . $detail->image) }}" alt="" class="img-fluid">
                         <div class="travel-title">
                             <h2 class="fw-bolder baseColor mt-4 mb-3">{{ $detail->company_name }}</h2>
                             <div class="d-flex align-items-center text-secondary">

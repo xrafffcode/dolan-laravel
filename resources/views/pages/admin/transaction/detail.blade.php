@@ -38,7 +38,8 @@
                         <th class="align-middle">Bukti Pembyaran</th>
                         <td class="align-middle">
                             @if (isset($data->payment->image))
-                                <img src="{{ Storage::url($data->payment->image) }}" width="160">
+                                <img src="{{ asset('storage/' . $data->payment->image) }}" alt="Bukti Pembayaran"
+                                    class="img-fluid">
                             @else
                                 PENDING
                             @endif
